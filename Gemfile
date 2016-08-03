@@ -10,6 +10,9 @@ source "https://rubygems.org"
 # Happy Jekylling!
 
 gem "github-pages", group: :jekyll_plugins
+gem "redcarpet"
+gem "pygments.rb"
+gem "octopress"
 
 # If you want to use Jekyll native, uncomment the line below.
 # To upgrade, run `bundle update`.

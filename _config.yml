@@ -6,21 +6,24 @@
 # `jekyll serve`. If you change this file, please restart the server process.
 
 # Site Settings
-locale                   : "en"
-title                    : "Site Title"
+locale                   : "en_US"
+title                    : "Youren Shen"
 title_separator          : "-"
-name                     : "Your Name"
+name                     : "The site of Youren Shen"
 description              : "An amazing website."
-url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : "http://yourenis.me" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+img_url                  : "http://yourenis.me/images"
+destination: ../HuaiyuSched.github.io
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+repository               : "HuaiyuSched/myblog" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
+gems: [jekyll-paginate]
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
-comments:
-  provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", custom"
+comments: 
+  provider               : "disqus" # false (default), "disqus", "discourse", "facebook", "google-plus", custom"
   disqus:
-    shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+    shortname            : "httphuaiyuschedgithubio" # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
     server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
@@ -39,9 +42,9 @@ yandex_site_verification :
 
 # Social Sharing
 twitter:
-  username               :
+  username               : "shenyouren"
 facebook:
-  username               :
+  username               : "HuaiyuSched"
   app_id                 :
   publisher              :
 og_image                 : # Open Graph/Twitter default site image
@@ -61,22 +64,22 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : "Youren Shen"
   avatar           : "bio-photo.jpg"
-  bio              : "I am an amazing person."
-  location         : "Somewhere"
-  email            :
+  bio              : "Normal student from China, Main field on Computer System. We are born to suffering, still straggle in the world."
+  location         : "Beijing China"
+  email            : "shenyouren@gmail.com"
   uri              :
   bitbucket        :
   codepen          :
   dribbble         :
   flickr           :
-  facebook         :
+  facebook         : "HuaiyuSched"
   foursquare       :
-  github           :
+  github           : "HuaiyuSched"
   google_plus      :
   keybase          :
-  instagram        :
+  instagram        : "youren.shen"
   lastfm           :
   linkedin         :
   pinterest        :
@@ -148,7 +151,7 @@ kramdown:
 # Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
-paginate_path: /page:num/
+paginate_path: blog/page:5/
 timezone: # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
@@ -204,3 +207,72 @@ compress_html:
   clippings: all
   ignore:
     envs: development
+
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+  # _docs
+  - scope:
+      path: ""
+      type: docs
+    values:
+      layout: single
+      read_time: false
+      author_profile: false
+      share: false
+      comments: false
+      sidebar:
+        nav: "docs"
+  # _recipes
+  - scope:
+      path: ""
+      type: recipes
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comments: true
+  # _pets
+  - scope:
+      path: ""
+      type: pets
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comment: true
+  # _portfolio
+  - scope:
+      path: ""
+      type: portfolio
+    values:
+      layout: single
+      author_profile: false
+      share: true
+
+# Default extensions
+post_ext: md
+page_ext: md
+
+# Found in _templates/
+post_layout: single
+page_layout: archive
+
+# Format titles with titlecase?
+titlecase: true

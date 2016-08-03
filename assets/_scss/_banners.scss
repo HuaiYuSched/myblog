@@ -1,0 +1,54 @@
+/* ==========================================================================
+   BANNERS
+   ========================================================================== */
+
+/*
+   Content banners
+   ========================================================================== */
+
+.ads {
+  position: relative;
+  text-align: center;
+  margin-top: $gutter;
+  margin-left: -$gutter;
+  margin-right: -$gutter;
+  @include media($medium) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  padding: 10px 0 20px;
+  &:after {
+    content: 'Advertisement';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    display: block;
+    @include font-size(12, no);
+    font-family: $alt-font;
+  }
+  ins {
+    border-width: 0;
+  }
+}
+
+/*
+   Google Adsense banners
+   ========================================================================== */
+
+/* Responsive banners (main content) */
+
+.r-ads { width: 300px; height: 250px; }
+@media(min-width: 520px) { .r-ads { width: 468px; height: 60px; } }
+@media(min-width: 728px) { .r-ads { width: 728px; height: 90px; } }
+@media(min-width: 900px) { .r-ads { width: 160px; height: 600px; } }
+@media(min-width: 1110px) { .r-ads { width: 300px; height: 600px; } }
+
+/* Responsive banners (comments) */
+
+.r-ads-comments { width: 300px; height: 250px; }
+@media(min-width: 520px) { .r-ads-comments { width: 468px; height: 60px; } }
+@media(min-width: 728px) { .r-ads-comments { width: 728px; height: 90px; } }
+@media(min-width: 900px) { .r-ads-comments { width: 200px; height: 200px; } }
+@media(min-width: 1110px) { .r-ads-comments { width: 300px; height: 225px; } }
+@media(min-width: 1220px) { .r-ads-comments { width: 336px; height: 280px; } }
