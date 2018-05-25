@@ -1,9 +1,13 @@
 ---
-layout: media
+layout: single
 permalink: /
 title: "Youren Shen"
 excerpt: ""
+share: true
+author_profile: false
+comment: true
+
 image:
-  feature:
-id: home
 ---
+
+我愿乘风破浪，踏遍黄沙海洋

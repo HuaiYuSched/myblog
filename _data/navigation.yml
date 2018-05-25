@@ -5,3 +5,7 @@ main:
 
   - title: "Resume"
     url: /resume
+
+  - title: "Gallery"
+    url: /gallery
+

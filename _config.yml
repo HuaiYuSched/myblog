@@ -66,7 +66,7 @@ analytics:
 author:
   name             : "Youren Shen"
   avatar           : "bio-photo.jpg"
-  bio              : "Normal student from China, Main field on Computer System. We are born to suffering, still straggle in the world."
+  bio              : "Normal student from China, Main field on Computer System. We are born to suffering, still struggle in the world."
   location         : "Beijing China"
   email            : "shenyouren@gmail.com"
   uri              :
@@ -74,9 +74,9 @@ author:
   codepen          :
   dribbble         :
   flickr           :
-  facebook         : "HuaiyuSched"
+  facebook         : "Yourenisme"
   foursquare       :
-  github           : "HuaiyuSched"
+  github           : "Yourens"
   google_plus      :
   keybase          :
   instagram        : "youren.shen"
@@ -89,7 +89,7 @@ author:
   tumblr           :
   twitter          :
   vine             :
-  weibo            :
+  weibo            : "2516720233"
   xing             :
   youtube          :
 
@@ -121,6 +121,7 @@ exclude:
   - Rakefile
   - README
   - tmp
+  - vendor
 keep_files:
   - .git
   - .svn

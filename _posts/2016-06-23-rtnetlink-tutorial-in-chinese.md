@@ -11,7 +11,7 @@ image:
   thumb:
 date: 2016-06-23T01:40:26+08:00
 ---
-rtnetlink是基于netlink机制的一个内核和协议栈相关操作的机制。其允许用户程序对内核的路由表进行读写。是Linux 2.2之后的一个新的功能。这个功能非常重要，在很多基础的工具中的使用也非常广泛。但是很少资料直接对rtnetlink的具体使用进行讲解，中文的资料只有一些对[Manual]的翻译和补充，Linux journal有非常详细的一篇框架文章，但是对具体过程解释不详细。另一方面，由于现实的应用中，对路由表等的处理较为复杂，没有比较简单直接的例子。并且其[Manual]中说到这个是Linux IPv4的路由 socket，但是其支持Ipv6，应该是[Manual]太久没更新的缘故。   
+rtnetlink是基于netlink机制的一个内核和协议栈相关操作的机制。其允许用户程序对内核的路由表进行读写。是Linux 2.2之后的一个新的功能。这个功能非常重要，在很多基础的工具中的使用也非常广泛。但是很少资料直接对rtnetlink的具体使用进行讲解，中文的资料只有一些对[Manual]的翻译和补充，[Linux Journal] [3]有非常详细的一篇框架文章，但是对具体过程解释不详细。另一方面，由于现实的应用中，对路由表等的处理较为复杂，没有比较简单直接的例子。并且其[Manual]中说到这个是Linux IPv4的路由 socket，但是其支持Ipv6，应该是[Manual]太久没更新的缘故。   
 因此，这篇文章并不对rtnetlink的数据结构或[Manual]进行详细的解释，而是解释其使用方式，并且举一个具体的使用样例。对一些操作和数据结构的构成有疑惑，可以直接看[Manual]。   
 
 ## Netlink
@@ -28,9 +28,10 @@ fd = socket(AF_NETLINK, SOCK_RAW, NETLINK_ROUTE);
 ```  
 
 而后用Send/sendto/sendmsg函数将rtnetlink的数据发给内核即可。   
+
 ```c
-send(socket_fd, msg, msg_len,0)      
-```    
+send(socket_fd, msg, msg_len,0);
+```
 
 
 而在接收时，亦可使用标准的recv函数。  
@@ -102,10 +103,10 @@ int send_nl_req(uint16_t msg_type, uint32_t seq,
 其中，send_nl_req中，第一个参数是rtnetlink的请求类型，第二个参数是包的序号，例子中可以为0，第三个参数为发送的包的内容，最后为包的长度。
 根据给出的四个参数，就可以构造出合适的发送包nlmsg.   
 read_nl_req 也是类似。   
-更详细的信息，请参看这篇[Blog][2]   
+关于Netlink更多详细的信息，请参看这篇[Blog][2]   
 
 ## rtnetlink数据流
-为了理解rtnetlink中的数据结构之间的关联，首先要了解其数据流。  
+要理解rtnetlink中的数据结构之间的关联，首先要了解其数据流。  
 自然，基于socket机制的通信过程是发送请求以后接收回复，接下来结合[Manual]描述更加具体的通信中数据流的解释。  
 首先，rtnetlink的消息类型有可以分为以下几种类型：  
 
@@ -208,10 +209,10 @@ _get_default_gw(char *addr, char *iface, const int family)
 使用之前封装好的API，将消息发送给内核。  
 
 ### 解构消息   
-    a.将buf赋值给nlhdr，并使用NLMSG_OK宏判断netlink消息的合法性（是否还有未处理的消息）  
-    b.将nlmsg消息解构。通过NLMSG_DATA宏，获得rtnetlink的消息，并判断这个消息的属性是否是正确的。我的判断是第33行看协议族是否一致，是否是一个路由表。  
-    c.如果这个renetlink的消息是可靠的，此时可以通过rt_msg的属性对rt_attr中的数据进行获取并解读。此处当其是一个路由消息时，我将它转换为可读的ip地址填充到参数中。  
-    d.迭代RT_attr，迭代netlink message。  
+1. 将buf赋值给nlhdr，并使用NLMSG_OK宏判断netlink消息的合法性（是否还有未处理的消息）  
+2. 将nlmsg消息解构。通过NLMSG_DATA宏，获得rtnetlink的消息，并判断这个消息的属性是否是正确的。我的判断是第33行看协议族是否一致，是否是一个路由表。  
+3. 如果这个renetlink的消息是可靠的，此时可以通过rt_msg的属性对rt_attr中的数据进行获取并解读。此处当其是一个路由消息时，我将它转换为可读的ip地址填充到参数中。  
+4. 迭代RT_attr，迭代netlink message。  
     
 
 [1]: http://blog.csdn.net/romainxie/article/details/8300443      

@@ -37,8 +37,7 @@ sometimes realize my limitation in intelligence then scared to be nobody in this
     <span class="badge-info">Android</span>
     <span class="badge-info">Rust</span>
     <span class="badge-info">HTML</span>
-    <span class="badge-info">CSS3</span>
-    <span class="badge-info">Iot</span> </li>
+    <span class="badge-info">CSS3</span></li>
   </ul>
 </div>
 
@@ -58,7 +57,7 @@ sometimes realize my limitation in intelligence then scared to be nobody in this
       <tr>
         <td>University of Electronic Science and Technology of China</td>
         <td>B.E.</td>
-        <td>Embedd System</td>
+        <td>Embedded System</td>
         <td>September 2011 - July 2015.</td>
       </tr>
       <tr>
